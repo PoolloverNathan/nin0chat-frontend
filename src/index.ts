@@ -133,8 +133,9 @@ export function addMessage(message: Message) {
     const timestampTag: HTMLElement = messageContainer.querySelector(".timestamp")!;
     const tagTag: HTMLElement = messageContainer.querySelector(".tag")!;
     usernameTag.textContent = `<${message.userInfo.username}>`;
+	let date = new Date(message.timestamp)
     timestampTag.textContent =
-        new Date(message.timestamp).getHours() + ":" + new Date(message.timestamp).getMinutes();
+        date.getHours() + ":" + String(date.getMinutes()).padStart(2, "0");
     usernameTag.style.fontWeight = "600";
     if (message.userInfo.roles & Role.System) {
         usernameTag.textContent = "";
